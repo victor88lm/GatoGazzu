@@ -1,0 +1,243 @@
+<!-- navbar.component.html -->
+<nav class="bg-white border-b border-gray-100">
+    <!-- Main Navbar -->
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a routerLink="/" class="block" aria-label="Ir a la página de inicio de La Casa del Gato Gazzu">
+            <picture>
+              <!-- Imagen en AVIF para mayor optimización -->
+              <source srcset="img/Logo.avif" type="image/avif">
+              <!-- Imagen en PNG como respaldo -->
+              <source srcset="img/Logo.png" type="image/png">
+              <!-- Imagen principal con SEO mejorado -->
+              <img 
+                src="img/Logo.png" 
+                alt="Logotipo de La Casa del Gato Gazzu, refugio y adopción de gatos" 
+                width="150" height="48" 
+                class="h-12 w-auto md:h-10" 
+                loading="lazy"
+                fetchpriority="high"
+              >
+            </picture>
+          </a>
+        </div>
+        
+        
+  
+        <!-- Desktop Menu - Centered -->
+        <div class="hidden md:flex items-center justify-center flex-1 mx-20">
+          <div class="flex items-center space-x-8">
+            <a routerLink="/" title="Volver al inicio de La Casa del Gato Gazzu" class="group flex items-center space-x-1 text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              <span>Inicio</span>
+            </a>
+            
+            <a routerLink="/quienes-somos" title="Conoce más sobre La Casa del Gato Gazzu" class="text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              ¿Quiénes somos?
+            </a>
+            
+            <a routerLink="/donaciones" title="Realiza una donación para apoyar el refugio" class="group flex items-center space-x-1 text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              <span>Donaciones</span>
+            </a>
+            <!-- Adopción Dropdown -->
+            <div class="relative group">
+              <button title="Explora nuestras opciones de adopción de gatos" class="text-gray-700 group-hover:text-black transition-colors duration-200 font-medium flex items-center space-x-1">
+                <span>Adopción</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+              <div class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
+                <div class="bg-white rounded-lg border border-gray-100 overflow-hidden">
+                  <a routerLink="/adopcion/hembras" title="Adopta una gata hembra" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black transition-colors duration-200">
+                    <div class="flex items-center space-x-2">
+                      <span>Hembras</span>
+                    </div>
+                  </a>
+                  
+                  <a routerLink="/adopcion/machos" title="Adopta un gato macho" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black transition-colors duration-200">
+                    <div class="flex items-center space-x-2">
+                      <span>Machos</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Tienda Dropdown -->
+            <div class="relative group">
+              <button title="Explora nuestra tienda online" class="text-gray-700 group-hover:text-black transition-colors duration-200 font-medium flex items-center space-x-1">
+                <span>Tienda</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+              <div class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
+                <div class="bg-white rounded-lg border border-gray-100 overflow-hidden">
+                  <a routerLink="/tienda/cerveza" title="Compra Cerveza Artesanal Meow en línea" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black transition-colors duration-200">
+                    <div class="flex items-center space-x-2">
+                      <span>Cerveza Artesanal Meow</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+  
+            <!-- Servicios Dropdown -->
+            <div class="relative group">
+              <button title="Explora nuestros servicios para gatos" class="text-gray-700 group-hover:text-black transition-colors duration-200 font-medium flex items-center space-x-1">
+                <span>Servicios</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+              <div class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
+                <div class="bg-white rounded-lg border border-gray-100 overflow-hidden">
+                  <a routerLink="/servicios/catfecito" title="Descubre el servicio Catfecito para tus gatos" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black transition-colors duration-200">
+                    <div class="flex items-center space-x-2">
+                      <span>Catfecito</span>
+                    </div>
+                  </a>
+                  <a routerLink="/servicios/resort" title="Reserva en Felinos Resort para tu gato" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-black transition-colors duration-200">
+                    <div class="flex items-center space-x-2">
+                      <span>Felinos Resort</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+  
+            <a routerLink="/blog" title="Lee nuestro blog sobre gatos y más" class="group flex items-center space-x-1 text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              <span>Blog</span>
+            </a>
+          </div>
+        </div>
+  
+        <!-- Contact CTA -->
+        <div class="hidden md:block">
+          <a href="/contacto" class="inline-flex items-center justify-center px-6 py-2 border border-black text-black font-medium rounded-lg hover:bg-black hover:text-white transition-all duration-200 transform hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Contacto
+          </a>
+        </div>
+  
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button
+            (click)="toggleMenu()"
+            class="inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-black hover:bg-gray-100 focus:outline-none transition-colors duration-200">
+            <svg *ngIf="!isOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg *ngIf="isOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Mobile Menu -->
+    <div *ngIf="isOpen" [@slideInOut] class="md:hidden fixed inset-0 z-50">
+      <!-- Backdrop -->
+      <div class="fixed inset-0 bg-black/1 backdrop-blur-sm" (click)="closeMenu()">
+      <!-- Sidebar -->
+        <div class="fixed inset-y-0 right-0 w-64 bg-white shadow-xl transform transition-transform duration-300" 
+             (click)="$event.stopPropagation()">
+          <div class="p-6 space-y-4">
+            <a routerLink="/" title="Volver al inicio de La Casa del Gato Gazzu" class="group flex items-center space-x-1 text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              <span>Inicio</span>
+          </a>          
+            
+            <a routerLink="/quienes-somos" class="block text-gray-700 hover:text-black transition-colors duration-200 font-medium">¿Quiénes somos?</a>
+            
+            <a routerLink="/donaciones" class="flex items-center space-x-2 text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              <span>Donaciones</span>
+            </a>
+  
+            <!-- Mobile Adopción Dropdown -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-gray-700 hover:text-black transition-colors duration-200 font-medium cursor-pointer"
+                   (click)="toggleDropdown('adopcion')">
+                <div class="flex items-center space-x-2">
+                  <span>Adopción</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                     [class.rotate-180]="dropdowns.adopcion"
+                     class="h-4 w-4 transform transition-transform duration-200" 
+                     viewBox="0 0 20 20" 
+                     fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div *ngIf="dropdowns.adopcion" [@fadeInOut] class="pl-8 space-y-2">
+                <a routerLink="/adopcion/hembras" class="block text-gray-700 hover:text-black transition-colors duration-200">Hembras</a>
+                <a routerLink="/adopcion/machos" class="block text-gray-700 hover:text-black transition-colors duration-200">Machos</a>
+              </div>
+            </div>
+  
+            <!-- Mobile Tienda Dropdown -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-gray-700 hover:text-black transition-colors duration-200 font-medium cursor-pointer"
+                   (click)="toggleDropdown('tienda')">
+                <div class="flex items-center space-x-2">
+                  <span>Tienda</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                     [class.rotate-180]="dropdowns.tienda"
+                     class="h-4 w-4 transform transition-transform duration-200" 
+                     viewBox="0 0 20 20" 
+                     fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div *ngIf="dropdowns.tienda" [@fadeInOut] class="pl-8">
+                <a routerLink="/tienda/cerveza" class="block text-gray-700 hover:text-black transition-colors duration-200">Cerveza Artesanal Meow</a>
+              </div>
+            </div>
+  
+            <!-- Mobile Servicios Dropdown -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-gray-700 hover:text-black transition-colors duration-200 font-medium cursor-pointer"
+                   (click)="toggleDropdown('servicios')">
+                <div class="flex items-center space-x-2">
+                  <span>Servicios</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                     [class.rotate-180]="dropdowns.servicios"
+                     class="h-4 w-4 transform transition-transform duration-200" 
+                     viewBox="0 0 20 20" 
+                     fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div *ngIf="dropdowns.servicios" [@fadeInOut] class="pl-8 space-y-2">
+                <a routerLink="/servicios/catfecito" class="block text-gray-700 hover:text-black transition-colors duration-200">Catfecito</a>
+                <a routerLink="/servicios/resort" class="block text-gray-700 hover:text-black transition-colors duration-200">Felinos Resort</a>
+              </div>
+            </div>
+  
+            <a routerLink="/blog" class="flex items-center space-x-2 text-gray-700 hover:text-black transition-colors duration-200 font-medium">
+              <span>Blog</span>
+            </a>
+  
+            <!-- Mobile Contact CTA -->
+            <div class="pt-4">
+              <a href="/contacto" class="flex items-center justify-center space-x-2 px-4 py-2 border border-black text-black font-medium rounded-lg hover:bg-black hover:text-white transition-all duration-200 transform hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                </svg>
+                <span>Contacto</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
