@@ -1,119 +1,86 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component} from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
-import { 
-  Mail, 
-  ClipboardList, 
-  Cat, 
-  ShoppingBasket 
-} from 'lucide-angular';
-
-interface BankInfo {
+interface Partner {
   name: string;
-  bank: string;
-  account: string;
-  clabe: string;
-  oxxo: string;
-  paypal: string;
+  image: string;
+  description: string;
 }
 
-interface Step {
-  number: number;
-  icon: any; // Cambiamos el tipo de string a any para aceptar componentes de lucide
-  text: string;
-  email?: string;
+interface BlogPost {
+  title: string;
+  date: string;
+  image: string;
+  excerpt: string;
+  slug: string;
 }
-interface Slide {
-  id: number;
-  image?: string; // Ahora es opcional
-  alt?: string;   // Ahora es opcional
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  steps?: Step[];
-  logos?: { img: string; alt: string; }[];
-  bankInfo?: BankInfo;
-  footer?: string;
-}
-
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  currentSlide = 0;
-  private autoSlideInterval: any;
+export class HomeComponent{
 
-  slides: Slide[] = [
-    {
-      id: 1,
-      image: '/img/Banner1.avif',
-      alt: 'Banner donación Casa del Gato Gazzu',
-      title: '¡Juntos vamos a lograrlo!',
-      description: 'Ayúdanos a que todos los gatitos de La Casa del Gato Gazzu tengan lo necesario durante su estancia. ¡Contamos contigo, Gazzuzero! No hay donativo pequeño, recuerda que todo suma.',
-      logos: [
-        {
-          img: 'img/logo-gazzu.avif',
-          alt: 'La casa del gato Gazzu'
-        },
-        {
-          img: 'img/logo-donar.avif',
-          alt: 'Donar es un acto de amor'
-        }
-      ]
-    },
-  ];
-
-  ngOnInit(): void {
-    this.startAutoSlide();
-    this.preloadImages();
-  }
-
-  ngOnDestroy(): void {
-    this.stopAutoSlide();
-  }
-
-  private preloadImages(): void {
-    this.slides.forEach(slide => {
-      if (slide.image) { // Solo pre-cargar si hay imagen
-        const img = new Image();
-        img.src = slide.image;
-        img.fetchPriority = 'high';
-      }
-    });
+  trackPartnerName(index: number, partner: Partner): string {
+    return partner.name;
   }
   
-
-  private startAutoSlide(): void {
-    this.autoSlideInterval = setInterval(() => {
-      this.nextSlide();
-    }, 5000);
-  }
-
-  private stopAutoSlide(): void {
-    if (this.autoSlideInterval) {
-      clearInterval(this.autoSlideInterval);
+  partners: Partner[] = [
+    {
+      name: 'Catfecito',
+      image: 'img/catfecito.avif',
+      description: 'Logo de Catfecito - Café y espacio para gatos'
+    },
+    {
+      name: 'Felinos Resort',
+      image: 'img/logo-FelinosResort.avif',
+      description: 'Logo de Felinos Resort - Hotel y spa para gatos'
+    },
+    {
+      name: 'Meow Cerveza Artesanal',
+      image: 'img/logo-cerveza-meow.avif',
+      description: 'Logo de Meow - Cerveza artesanal con causa felina'
+    },
+    {
+      name: 'Sugar Cat Bakery',
+      image: 'img/logo-sugar-cat-bakery.avif',
+      description: 'Logo de Sugar Cat Bakery - Panadería y repostería felina'
+    },
+    {
+      name: 'Casa del Gato',
+      image: 'img/Logo-Adoptar.avif',
+      description: 'Logo de Casa del Gato - Centro de adopción felina'
+    },
+    {
+      name: 'La Tienda de los Gatos',
+      image: 'img/logo-la-tienda-de-los-gatos.avif',
+      description: 'Logo de La Tienda de los Gatos - Productos para felinos'
     }
-  }
+  ];
 
-  nextSlide(): void {
-    this.resetTimer();
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-  }
 
-  prevSlide(): void {
-    this.resetTimer();
-    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-  }
-
-  goToSlide(index: number): void {
-    this.resetTimer();
-    this.currentSlide = index;
-  }
-
-  private resetTimer(): void {
-    this.stopAutoSlide();
-    this.startAutoSlide();
-  }
+  blogPosts: BlogPost[] = [
+    {
+      title: 'Récord histórico de calor 🔥 en Cdmx, protejamos a nuestros mishis',
+      date: '2024-04-17',
+      image: 'img/cat-heat.avif',
+      excerpt: 'En estos días de altas temperaturas la correcta hidratación de nuestros gatitos es un tema...',
+      slug: 'record-historico-calor-cdmx'
+    },
+    {
+      title: 'Día Internacional de los derechos de los animales',
+      date: '2022-12-03',
+      image: 'img/animal-rights.avif',
+      excerpt: 'Gazzuzeros, hoy se celebra el día internacional de los derechos de los animales, por ello...',
+      slug: 'dia-internacional-derechos-animales'
+    },
+    {
+      title: 'Santa Miau la opción perfecta para ayudar',
+      date: '2022-11-29',
+      image: 'img/santa-miau.avif',
+      excerpt: 'Gazzuzeros, llegó Santa Miau a la temporada decembrina, para poner en nuestros corazones solo cosas...',
+      slug: 'santa-miau-opcion-perfecta'
+    }
+  ];
 }

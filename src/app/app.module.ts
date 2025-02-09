@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home/home.component';
 import { LucideAngularModule } from 'lucide-angular';
+import { NgOptimizedImage } from '@angular/common';
 
 import { 
   Mail, 
@@ -14,17 +15,20 @@ import {
   Cat, 
   ShoppingBasket 
 } from 'lucide-angular';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
+    NgOptimizedImage,
 
     LucideAngularModule.pick({ 
       Mail, 

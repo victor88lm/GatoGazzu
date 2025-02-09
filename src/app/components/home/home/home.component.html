@@ -1,34 +1,488 @@
-<section class="relative w-full h-[600px] md:h-[600px] overflow-hidden">
-  <!-- Contenedor del Slider -->
-  <div class="flex h-full transition-transform duration-500 ease-in-out relative"
-    [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+<!-- Hero Section -->
+<div class="relative w-full h-[614px] bg-cover bg-center bg-no-repeat mt-20"
+  [ngStyle]="{'background-image': 'url(img/Banner.avif)'}" role="banner" aria-label="Banner Principal">
+  <!-- Overlay negro semitransparente -->
+  <div class="absolute inset-0 bg-black bg-opacity-20" aria-hidden="true"></div>
 
-    <div *ngFor="let slide of slides; let i = index" class="flex-none w-full h-full relative">
+  <div class="absolute inset-0 flex items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="max-w-lg relative">
+        <!-- Logos section -->
+        <div class="flex flex-wrap justify-start gap-4 mb-6 max-w-full overflow-hidden">
+          <img src="img/logo-gazzu.avif" alt="Logo de La Casa del Gato Gazzu"
+            class="h-20 md:h-16 sm:h-12 max-w-[150px] object-contain w-full md:w-auto" loading="lazy">
+          <img src="img/logo-donar.avif" alt="Logo de Donar"
+            class="h-20 md:h-16 sm:h-12 max-w-[150px] object-contain w-full md:w-auto hidden md:block" loading="lazy">
+          <img src="img/logo-catfecito.avif" alt="Logo de Catfecito"
+            class="h-20 md:h-16 sm:h-12 max-w-[150px] object-contain w-full md:w-auto" loading="lazy">
+        </div>
 
-      <!-- Imagen optimizada -->
-      <picture>
-        <source [srcset]="slide.image" type="image/avif">
-        <img [src]="slide.image" [alt]="slide.alt" class="w-full h-full object-cover md:object-center object-left"
-          [attr.fetchpriority]="i === 0 ? 'high' : 'low'" [loading]="i === 0 ? 'eager' : 'lazy'" decoding="async"
-          width="1920" height="600">
-      </picture>
-
-      <!-- Contenido slide 1 -->
-      <div *ngIf="slide.id === 1" class="absolute inset-0 flex items-center px-6 md:px-40">
-        <div class="max-w-2xl">
-          <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
-            {{slide.title}}
-          </h2>
-
-          <p class="text-lg md:text-xl text-white mb-8 max-w-xl drop-shadow-lg">
-            {{slide.description}}
+        <!-- Text content -->
+        <div>
+          <h1 class="text-4xl font-bold text-white mb-4" aria-level="1">
+            Dales una segunda oportunidad
+          </h1>
+          <p class="text-xl text-white mb-8">
+            Adopta, dona o voluntarízate. Cada acción cuenta para cambiar la vida de un gato rescatado.
           </p>
+          <a href="#donar"
+            class="bg-white text-pink-500 font-semibold py-3 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-100"
+            role="button" aria-label="Botón para donar ahora">
+            Donar ahora
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-          <div *ngIf="slide.logos" class="flex space-x-4 mt-8">
-            <img *ngFor="let logo of slide.logos" [src]="logo.img" [alt]="logo.alt" class="h-12 md:h-16">
+<section class="bg-gradient-to-r from-gray-50 via-white to-gray-50 py-20" aria-labelledby="partners-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado de la sección -->
+    <div class="text-center mb-16">
+      <h2 id="partners-title" class="text-3xl font-light text-gray-800 mb-3 relative inline-block">
+        Nuestros Aliados Felinos
+        <div
+          class="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-pink-400 to-transparent">
+        </div>
+      </h2>
+    </div>
+
+    <!-- Grid de logos -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8" role="list"
+      aria-label="Nuestros aliados estratégicos">
+      <div *ngFor="let partner of partners; trackBy: trackPartnerName" class="group relative" role="listitem">
+        <div class="
+          p-6 
+          rounded-xl 
+          bg-white 
+          shadow-sm 
+          hover:shadow-md 
+          transition-all 
+          duration-300 
+          transform 
+          hover:-translate-y-1
+          relative
+          overflow-hidden
+        ">
+          <div class="aspect-w-16 aspect-h-9 flex items-center justify-center">
+            <img [ngSrc]="partner.image" [alt]="partner.description" width="150" height="150"
+              class="w-32 object-contain transition-all duration-300 group-hover:scale-105" priority="low" />
+          </div>
+          <div class="
+            absolute 
+            inset-0 
+            bg-gradient-to-r 
+            from-pink-100/0 
+            via-pink-100/5 
+            to-pink-100/0 
+            opacity-0 
+            group-hover:opacity-100 
+            transition-opacity 
+            duration-300
+          "></div>
+        </div>
+        <!-- Tooltip con el nombre -->
+        <div class="
+          absolute 
+          -bottom-8 
+          left-1/2 
+          transform 
+          -translate-x-1/2 
+          px-3 
+          py-1 
+          bg-gray-800 
+          text-white 
+          text-sm 
+          rounded-md 
+          opacity-0 
+          group-hover:opacity-100 
+          transition-opacity 
+          duration-200
+          whitespace-nowrap
+        ">
+          {{ partner.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-2 bg-gradient-to-b from-white to-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Sección de adopción -->
+    <div class="mb-20">
+      <div class="grid lg:grid-cols-2 gap-10">
+        <!-- Card para adopción -->
+        <div class="relative group">
+          <div class="bg-white rounded-3xl shadow-lg overflow-hidden transition-all duration-300 group-hover:shadow-xl">
+            <div class="aspect-w-16 aspect-h-9 relative">
+              <img ngSrc="img/adopciones.avif" alt="Gatitos esperando adopción" width="800" height="450"
+                class="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-105"
+                priority />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+
+            <div class="p-8 relative">
+              <div class="flex items-center space-x-4 mb-6">
+                <span class="flex h-12 w-12 items-center justify-center rounded-full bg-pink-100">
+                  <svg class="h-6 w-6 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900">Adopta un amigo felino</h3>
+                  <p class="text-sm text-gray-600">Gatitos y gatitas esperando un hogar</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-6">
+                <a href="/adoptar/hembras"
+                  class="flex items-center justify-center px-6 py-3 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition-colors duration-300">
+                  Adoptar Gatita
+                </a>
+                <a href="/adoptar/machos"
+                  class="flex items-center justify-center px-6 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-colors duration-300">
+                  Adoptar Gatito
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información institucional -->
+        <div class="flex flex-col justify-center">
+          <div class="max-w-xl">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">
+              Transformando vidas felinas desde hace 15 años
+            </h2>
+
+            <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+              La Casa del Gato Gazzu es una asociación civil sin fines de lucro dedicada
+              a dar una segunda oportunidad a nuestros amigos felinos.
+            </p>
+
+            <blockquote class="relative">
+              <div class="relative z-10">
+                <p class="text-xl italic text-gray-800 leading-relaxed mb-4">
+                  "Nuestra filosofía es el respeto a los gatos como especie que merece
+                  un trato digno y justo, ya que también son seres vivos."
+                </p>
+                <footer class="text-gray-600">
+                  ― Helena Zulbarán
+                </footer>
+              </div>
+
+              <div class="absolute top-0 left-0 transform -translate-x-6 -translate-y-4">
+                <svg width="40" height="40" class="text-gray-200" fill="currentColor">
+                  <path
+                    d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10 10-4.48 10-10S15.52 0 10 0zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                </svg>
+              </div>
+            </blockquote>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+              <div class="flex items-center space-x-2">
+                <span class="w-12 h-12 flex items-center justify-center rounded-full bg-green-100">
+                  <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <span class="text-gray-700">+500 adopciones exitosas</span>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <span class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <span class="text-gray-700">15 años de experiencia</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative py-24 overflow-hidden bg-gradient-to-b from-white to-gray-50"
+  aria-labelledby="mission-vision-title">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 opacity-5">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-pink-100 via-transparent to-transparent">
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Image Column -->
+      <div class="relative order-2 lg:order-1">
+        <div
+          class="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-300">
+          <img ngSrc="img/cat-portrait.avif" alt="Gato tricolor con ojos amarillos mirando a la cámara" width="800"
+            height="600" class="w-full h-auto object-cover hidden lg:block" priority />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent mix-blend-overlay"></div>
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="order-1 lg:order-2">
+        <div class="space-y-12">
+          <!-- Misión -->
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+            </div>
+            <div class="relative bg-white rounded-xl shadow-sm p-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                <span class="inline-block p-2 bg-pink-100 rounded-lg">
+                  <svg class="w-6 h-6 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </span>
+                Misión
+              </h2>
+              <p class="text-gray-600 leading-relaxed">
+                Ser un centro de adopción para gatos en situación de abandono en la CDMX,
+                fomentando la tenencia responsable y el conocimiento sobre los gatos a través
+                de diferentes campañas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Visión -->
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+            </div>
+            <div class="relative bg-white rounded-xl shadow-sm p-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                <span class="inline-block p-2 bg-blue-100 rounded-lg">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                  </svg>
+                </span>
+                Visión
+              </h2>
+              <p class="text-gray-600 leading-relaxed">
+                Seguir siendo un centro de adopción especializado en gatos donde se ofrezca
+                un hogar temporal y atención veterinaria de excelencia; teniendo un alcance
+                internacional para lograr un cambio en la sociedad a través de campañas de
+                concientización y esterilización.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative py-20 overflow-hidden bg-gradient-to-b from-white via-pink-50/30 to-white"
+  aria-labelledby="donation-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Imagen del gatito -->
+      <div class="relative group">
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-pink-200 to-purple-200 rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+        </div>
+        <div class="relative rounded-3xl overflow-hidden shadow-xl">
+          <img ngSrc="img/orange-kitten.avif" alt="Gatito naranja necesitando un hogar" width="400" height="480"
+            class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+            priority />
+          <div class="absolute inset-0 bg-gradient-to-t from-pink-500/30 to-transparent mix-blend-overlay"></div>
+        </div>
+      </div>
+
+      <!-- Contenido de donación -->
+      <div class="lg:pl-8">
+        <div class="space-y-2">
+          <!-- Mensaje principal -->
+          <div>
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">#SeValeAyudar</span>
+            </h1>
+            <p class="text-lg text-gray-700 leading-relaxed mb-8">
+              Los gatos maltratados y sin hogar están solos. La casa del Gato Gazzu A.C. lucha
+              para cambiar su vida, y encontrarles un hogar que los ame para siempre.
+            </p>
+          </div>
+
+          <!-- Tarjeta de información de donación -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 relative overflow-hidden border border-pink-100">
+            <div class="absolute top-0 right-0 -mt-8 -mr-8">
+              <div class="text-pink-100">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              </div>
+            </div>
+
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
+              <span class="w-1.5 h-8 bg-gradient-to-b from-pink-500 to-purple-500 rounded-full"></span>
+              Información para donativos
+            </h2>
+
+            <!-- Información bancaria -->
+            <div class="space-y-4 relative">
+              <div
+                class="bg-gradient-to-r from-gray-50 to-pink-50 rounded-xl p-6 hover:from-gray-100 hover:to-pink-100 transition-colors duration-300">
+                <h3 class="font-medium text-gray-900 mb-4">La Casa del Gato Gazzu AC</h3>
+                <dl class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="bg-white/80 p-3 rounded-lg">
+                    <dt class="text-gray-600 text-sm">Banco</dt>
+                    <dd class="font-medium text-gray-900">Inbursa</dd>
+                  </div>
+                  <div class="bg-white/80 p-3 rounded-lg">
+                    <dt class="text-gray-600 text-sm">Cuenta</dt>
+                    <dd class="font-medium text-gray-900">50031120191</dd>
+                  </div>
+                  <div class="bg-white/80 p-3 rounded-lg">
+                    <dt class="text-gray-600 text-sm">CLABE</dt>
+                    <dd class="font-medium text-gray-900 break-all">036180500311209111</dd>
+                  </div>
+                  <div class="bg-white/80 p-3 rounded-lg">
+                    <dt class="text-gray-600 text-sm">OXXO</dt>
+                    <dd class="font-medium text-gray-900">4658285800445037</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <!-- PayPal y QR -->
+              <div class="grid md:grid-cols-2 gap-6 items-center mt-8">
+                <div class="space-y-4">
+                  <a href="https://www.paypal.com/donate/?hosted_button_id=7UW6ZC59EV7QG" target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center w-full px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-xl hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <img src="/icons/paypal.svg" alt="PayPal" class="w-6 h-6 mr-2" />
+                    Donar por PayPal
+                  </a>
+                  <p class="text-sm text-gray-600 text-center">
+                    donativos&#64;gatogazzu.org
+                  </p>
+                </div>
+
+                <div class="flex justify-center">
+                  <div class="p-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <img ngSrc="img/donation-qr.avif" alt="Código QR para donaciones" width="128" height="128"
+                      class="w-32 h-32" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nota adicional -->
+          <div class="flex items-start gap-3 p-4 bg-pink-50 rounded-lg">
+            <span class="text-pink-500 mt-1">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+            <p class="text-sm text-gray-600">
+              Tu donación ayuda a proporcionar alimento, atención médica y un hogar temporal
+              a gatitos necesitados. Cada aportación marca la diferencia.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-gradient-to-b from-gray-50 to-white">
+  <div class="container mx-auto px-4">
+    <!-- Elegant Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-20">
+      <span class="text-sm uppercase tracking-[0.3em] text-gray-500 mb-4 block">Nuestro Blog</span>
+      <h2 class="text-6xl font-light mb-6 text-gray-900">
+        Últimas <span class="font-semibold">Publicaciones</span>
+      </h2>
+      <p class="text-gray-600 text-lg font-light">
+        Conoce todas nuestras historias y contenidos sobre el cuidado felino
+      </p>
+      <div class="w-16 h-[1px] bg-black mx-auto mt-8 opacity-30"></div>
+    </div>
+
+    <!-- Refined Blog Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <!-- Elegant Blog Cards -->
+      <article *ngFor="let post of blogPosts"
+        class="group bg-white rounded-none border border-gray-100 overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1">
+        
+        <!-- Enhanced Image Container -->
+        <div class="relative aspect-[16/10] overflow-hidden">
+          <img 
+            [src]="post.image" 
+            [alt]="post.title"
+            class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute bottom-6 left-6">
+            <time [dateTime]="post.date" 
+              class="inline-block px-4 py-1.5 bg-white text-gray-800 text-xs tracking-wider uppercase font-medium">
+              {{post.date | date:'d MMM yyyy':'es'}}
+            </time>
+          </div>
+        </div>
+
+        <!-- Refined Content -->
+        <div class="p-8">
+          <h3 class="text-xl font-medium mb-4 leading-relaxed group-hover:text-gray-900 transition-colors">
+            <a [routerLink]="['/blog', post.slug]" class="hover:text-pink-600">
+              {{post.title}}
+            </a>
+          </h3>
+          <p class="text-gray-600 mb-8 line-clamp-3 text-sm leading-relaxed">
+            {{post.excerpt}}
+          </p>
+          
+          <!-- Elegant CTA -->
+          <div class="flex items-center justify-between">
+            <a [routerLink]="['/blog', post.slug]"
+              class="inline-flex items-center group/btn">
+              <span class="text-sm font-medium mr-2 text-gray-900 group-hover/btn:text-pink-600 transition-colors">
+                Leer más
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" 
+                class="h-4 w-4 text-pink-600 transform transition-transform duration-300 group-hover/btn:translate-x-1" 
+                viewBox="0 0 20 20" 
+                fill="currentColor">
+                <path fill-rule="evenodd" 
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" 
+                  clip-rule="evenodd" 
+                />
+              </svg>
+            </a>
+            
+            <!-- Category Tag -->
+            <span class="text-xs text-gray-500 uppercase tracking-wider px-3 py-1 bg-gray-50">
+              Cuidados
+            </span>
+          </div>
+        </div>
+      </article>
+    </div>
+    
+    <!-- View All Posts Button -->
+    <div class="text-center mt-16">
+      <a href="/blog" 
+        class="inline-block px-8 py-3 border-2 border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white transition-colors duration-300 text-sm uppercase tracking-wider font-medium">
+        Ver todas las publicaciones
+      </a>
     </div>
   </div>
 </section>
